@@ -1,0 +1,49 @@
+---
+# tasks file for setup_nginx
+
+- name: update packages
+  yum:
+    name: '*'
+    state: latest
+
+- name: install latest epel-release
+  yum:
+    name: epel-release
+    state: latest
+
+- name: install nginx
+  yum:
+    name: nginx
+    state: present
+
+- name: start and enable nginx
+  service:
+    name: nginx
+    state: started
+    enabled: true
+
+- name: make a ssl folder
+  file:
+    path: /etc/nginx/ssl
+    state: directory
+
+- name: create self-signed SSL cert
+  command: openssl req -new -nodes -x509 -subj "/C=US/ST=Pennsylvania/L=Philadelphia/O=IT/CN=${ansible_hostname}" -days 3650 -keyout /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.crt -extensions v3_ca creates=/etc/nginx/ssl/server.crt
+  notify: restart nginx
+
+- name: update nginx.conf
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  notify: restart nginx
+
+- name: clear contents of /usr/share/nginx/html/ folder
+  file:
+    path: /usr/share/nginx/html/
+    state: absent
+
+- name: copy index.html file
+  file:
+    src: index.html
+    dest: /usr/share/nginx/html/index.html
+  notify: restart nginx
