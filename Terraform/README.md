@@ -11,6 +11,6 @@ Terraform will create infrastructure in AWS EC2 as well as configure the instanc
 5. Sit back and relax and let Terraform take care of creating EC2 instances, VPC, subnets, routing tables, internet gateway, security group, key pairs and then configures them using the provision_server.sh script in the Terraform folder of this project. This shell script install dependencies, clones this repo and runs Ansible to setup NGINX and then run the TestInfra unit tests afterwards.
 6. Profit! Go to the site using the Public IP address or DNS and see the `Hello World!` page be returned.
 
-# Notes
+# Scaling Up
 
 To scale up from 1 to x instances, simply update `ec2-machines.tf` file on line 2 where it says `count = "${var.count}"`. The default count is set to 1 in the `variables.tf` file so you can override this to how many instances you please. Terraform FTW!
