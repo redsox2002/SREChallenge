@@ -32,7 +32,7 @@
 
 - name: copy index.html file
   file:
-    src: $HOME/SRE_Challenge/index.html
+    src: "{{ index_source }}"
     dest: "{{ index_location }}"
   notify: restart nginx
 

@@ -19,8 +19,8 @@ pip install testinfra
 
 set -x
 # Clone GitHub repo with Ansible playbook
-git clone https://github.com/redsox2002/SRE_Challenge.git
-cd SRE_Challenge/Ansible
+git clone https://github.com/redsox2002/SREChallenge.git
+cd SREChallenge/Ansible
 ansible-playbook -i hosts nginx.yml
 
 # Run testinfra
