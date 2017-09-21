@@ -18,11 +18,23 @@ resource "aws_instance" "nginx-server" {
   provisioner "file" {
     source = "provision_server.sh"
     destination = "/tmp/provision_server.sh"
+
+    connection {
+      type = "ssh"
+      user = "ec2-user"
+      private_key = "${file("nginx-test-key")}"
+    }
   }
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/provision_server.sh",
       "/tmp/provision_server.sh",
     ]
+
+    connection {
+      type = "ssh"
+      user = "ec2-user"
+      private_key = "${file("nginx-test-key")}"
+    }
   }
 }
