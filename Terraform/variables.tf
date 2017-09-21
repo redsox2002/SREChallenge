@@ -37,3 +37,15 @@ variable "disk_size" {
 variable "count" {
   default = 1
 }
+variable "vpc-fullcidr" {
+    default = "172.28.0.0/16"
+  description = "the vpc cdir"
+}
+variable "Subnet-Public-AzA-CIDR" {
+  default = "172.28.0.0/24"
+  description = "the cidr of the subnet"
+}
+variable "Subnet-Private-AzA-CIDR" {
+  default = "172.28.3.0/24"
+  description = "the cidr of the subnet"
+}

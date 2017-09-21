@@ -4,7 +4,8 @@ resource "aws_security_group" "nginx" {
     Name = "nginx-group"
   }
   description = "Security group for nginx servers"
-
+  vpc_id = "${aws_vpc.terraformmain.id}"
+  
   ingress {
     from_port = 80
     to_port = 80
