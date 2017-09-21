@@ -20,9 +20,9 @@ def test_nginx_running_and_enabled(host):
 
 def test_ssl_cert_is_present(host):
     ssl = host.file("/etc/nginx/ssl/server.crt")
-    assert ssl.exists == "True"
-    
+    assert ssl.exists
+
 
 def test_index_file_is_present(host):
     index = host.file("/usr/share/nginx/html/index.html")
-    assert index.exists == "True"
+    assert index.exists

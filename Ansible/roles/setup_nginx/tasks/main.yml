@@ -28,9 +28,7 @@
   notify: restart nginx
 
 - name: clear contents of /usr/share/nginx/html/ folder
-  file:
-    path: /usr/share/nginx/html/
-    state: absent
+  command: rm -rf /usr/share/nginx/html/*
 
 - name: copy index.html file
   file:
