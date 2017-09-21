@@ -26,3 +26,4 @@ def test_ssl_cert_is_present(host):
 def test_index_file_is_present(host):
     index = host.file("/usr/share/nginx/html/index.html")
     assert index.exists
+    assert index.contains('Hello World!')
