@@ -14,3 +14,7 @@ Terraform will create infrastructure in AWS EC2 as well as configure the instanc
 # Scaling Up
 
 To scale up from 1 to x instances, simply update `ec2-machines.tf` file on line 2 where it says `count = "${var.count}"`. The default count is set to 1 in the `variables.tf` file so you can override this to how many instances you please. Terraform FTW!
+
+# Notes
+
+You might wonder why index.html is in the root of the repo instead of being stored in the `files` folder in Ansible. This is because in a real-world scenario, a developer would not update the index.html file in the Ansible Galaxy files folder but instead in the SCM itself hence why it's there. 
