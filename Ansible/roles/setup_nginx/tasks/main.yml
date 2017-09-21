@@ -14,11 +14,11 @@
 
 - name: make a ssl folder
   file:
-    path: /etc/nginx/ssl
+    path: "{{ ssl_directory }}"
     state: directory
 
 - name: create self-signed SSL cert
-  command: openssl req -new -nodes -x509 -subj "/C=US/ST=Pennsylvania/L=Philadelphia/O=IT/CN=${ansible_hostname}" -days 3650 -keyout /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.crt -extensions v3_ca creates=/etc/nginx/ssl/server.crt
+  command: "{{ ssl_command }}"
   notify: restart nginx
 
 - name: update nginx.conf
@@ -32,6 +32,7 @@
 
 - name: copy index.html file
   file:
-    src: index.html
-    dest: /usr/share/nginx/html/index.html
+    src: $HOME/SRE_Challenge/index.html
+    dest: "{{ index_location }}"
   notify: restart nginx
+
