@@ -5,6 +5,7 @@ resource "aws_instance" "nginx-server" {
     user = "ec2-user"
   }
 
+# This allows Terraform to not update instances already created in EC2.
   lifecycle {
     ignore_changes = [
       "ami",
@@ -13,11 +14,11 @@ resource "aws_instance" "nginx-server" {
     ]
   }
 
-  ami = "${lookup(var.AmiLinux, var.region)}"
-  instance_type = "t2.micro"
+  ami = "${lookup(var.AmiLinux, var.region)}" # looks up the AMI specified the region you put in terraform apply
+  instance_type = "${var.instance_type}"
   associate_public_ip_address = "true"
-  subnet_id = "${aws_subnet.PublicAZA.id}"
-  vpc_security_group_ids = ["${aws_security_group.nginx.id}"]
+  subnet_id = "${aws_subnet.PublicAZA.id}" # Adding the subnet in the subnets.tf file
+  vpc_security_group_ids = ["${aws_security_group.nginx.id}"] # Adding the security group in the securitygroups.tf file
   key_name = "${var.key_name}"
 
   root_block_device {
@@ -25,7 +26,7 @@ resource "aws_instance" "nginx-server" {
   }
 
   tags {
-    Name = "nginx-server-0${count.index}"
+    Name = "nginx-server-0${count.index}" # Uses count.index to add to the count every time you scale up.
   }
 
   provisioner "file" {
