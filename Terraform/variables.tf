@@ -24,10 +24,6 @@ variable "key_name" {
   default = "nginx-test-key"
   description = "The ssh key to use in the nginx instance(s)"
 }
-variable "aws_region" {
-  default = "us-east-1"
-  description = "The AWS region to launch servers"
-}
 variable "instance_type" {
   default = "t2.micro"
 }
