@@ -59,7 +59,7 @@ http {
         root         /usr/share/nginx/html;
 
         ssl_certificate "/etc/nginx/ssl/server.crt";
-        ssl_certificate_key "/etc/nginx/sslserver.key";
+        ssl_certificate_key "/etc/nginx/ssl/server.key";
         ssl_session_cache shared:SSL:1m;
         ssl_session_timeout  10m;
         ssl_ciphers HIGH:!aNULL:!MD5;
