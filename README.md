@@ -4,7 +4,7 @@ This entire project is controlled via Terraform (Provisioning, Configuring and T
 
 The benefits of using Terraform is scability. AWS does have auto-scaling built in, but if a private cloud provider like OpenStack is used for example using Terraform you can scale up as Terraform keeps the state of the infrastructure already created. You can just choose a new `count` for the amount of instances you want and Terraform will provision only the new instances. This is all made possible through the terraform.tfstate file which tracks the current state of the infrastructure created via Terraform. After scaling up, one can add the new servers to a HAProxy server for load balancing.
 
-To view the finished working URL, type this in your browser: http://ec2-34-227-224-25.compute-1.amazonaws.com. You will notice it will redirect you to HTTPS.
+To view the finished working URL, type this in your browser: http://ec2-54-173-30-253.compute-1.amazonaws.com. You will notice it will redirect you to HTTPS.
 
 # Software Used in this Project:
 
