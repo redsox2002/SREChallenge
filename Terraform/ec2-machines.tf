@@ -1,5 +1,5 @@
 resource "aws_instance" "nginx-server" {
-  count = "3"
+  count = "${var.count}"
 
   connection {
     user = "ec2-user"
