@@ -1,6 +1,18 @@
 resource "aws_instance" "nginx-server" {
   count = "${var.count}"
 
+  connection {
+    user = "ec2-user"
+  }
+
+  lifecycle {
+    ignore_changes = [
+      "ami",
+      "instance_type",
+      "user_data",
+    ]
+  }
+
   ami = "${lookup(var.AmiLinux, var.region)}"
   instance_type = "t2.micro"
   associate_public_ip_address = "true"
@@ -13,7 +25,7 @@ resource "aws_instance" "nginx-server" {
   }
 
   tags {
-    name = "nginx-server-0${count.index}"
+    Name = "nginx-server-0${count.index}"
   }
 
   provisioner "file" {

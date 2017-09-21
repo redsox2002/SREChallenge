@@ -8,14 +8,14 @@ sudo yum -y install epel-release
 # Remove Amazon Linux AMI pip install
 
 sudo rm /usr/bin/pip
-export PATH=$PATH:$HOME/bin:/usr/local/bin
-source ~/.bash_profile
 
 # Install pip, ansible and testinfra
 curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
-python get-pip.py
-pip install ansible
-pip install testinfra
+sudo python get-pip.py
+export PATH=$PATH:$HOME/bin:/usr/local/bin
+source ~/.bash_profile
+pip install ansible --user
+pip install testinfra --user
 
 set -x
 # Clone GitHub repo with Ansible playbook

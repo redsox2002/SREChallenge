@@ -5,7 +5,7 @@ resource "aws_security_group" "nginx" {
   }
   description = "Security group for nginx servers"
   vpc_id = "${aws_vpc.terraformmain.id}"
-  
+
   ingress {
     from_port = 80
     to_port = 80
@@ -23,5 +23,11 @@ resource "aws_security_group" "nginx" {
     to_port = 22
     protocol = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+  egress {
+  from_port = 0
+  to_port = 65535
+  protocol = "-1"
+  cidr_blocks = ["0.0.0.0/0"]
   }
 }
