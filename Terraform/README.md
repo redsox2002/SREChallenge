@@ -6,7 +6,7 @@ Terraform will create infrastructure in AWS EC2 as well as configure the instanc
 
 1. Download and install Terraform for your operating system (https://www.terraform.io/downloads.html)
 2. Clone this repo and `cd` into the `Terraform` folder.
-3. Run `terraform init` which will initialize the working directory with Terraform files for the cloud provider (AWS in this case).
+3. Run `terraform init` which will initialize the working directory containg the Terraform files for the cloud provider (AWS in this case).
 
 # Basic Usage
 
