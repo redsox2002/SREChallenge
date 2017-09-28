@@ -17,10 +17,22 @@ Terraform will create infrastructure in AWS EC2 as well as configure the instanc
 5. Sit back and relax and let Terraform take care of creating EC2 instances, VPC, subnets, routing tables, internet gateway, security group, key pairs and then configures them using the provision_server.sh script in the Terraform folder of this project. This shell script install dependencies, clones this repo and runs Ansible to setup NGINX and then run the TestInfra unit tests afterwards.
 6. Profit! Go to the site using the Public IP address or DNS and see the `Hello World!` page be returned.
 
+# Using setup.sh file
+
+1. This will work on nix machines, haven't tested on Windows yet, make sure you have the `aws cli` and `jq` installed.
+2. Run `./setup.sh`, this file does the following:
+  * runs `terraform init`
+  * creates the key pair called `nginx-test-key` and `nginx-test-key.pub`
+  * updates key.tf with the public key
+  * it then asks you to put in your AWS Access Key, Secret Access Key and default region
+  * Runs `terraform plan` and lets you view what Terraform will create
+  * With user input to proceed, it will run `terraform apply` and create all infrastructure, run Ansible to setup NGINX and run TestInfra unit tests
+  * After it succeeds, the script will return back to the Public DNS of the EC2 instance Terraform creates. You can now visit the site.
+  
 # Scaling Up
 
 To scale up from 1 to x instances, simply update `ec2-machines.tf` file on line 2 where it says `count = "${var.count}"`. The default count is set to 1 in the `variables.tf` file so you can override this to how many instances you please. Terraform FTW!
 
 # Notes
 
-You might wonder why index.html is in the root of the repo instead of being stored in the `files` folder in Ansible. This is because in a real-world scenario, a developer would not update the index.html file in the Ansible Galaxy files folder but instead in the SCM itself hence why it's there. 
+You might wonder why index.html is in the root of the repo instead of being stored in the `files` folder in Ansible. This is because in a real-world scenario, a developer would not update the index.html file in the Ansible Galaxy files folder but instead in the SCM itself hence why it's there.
