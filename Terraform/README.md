@@ -21,14 +21,14 @@ Terraform will create infrastructure in AWS EC2 as well as configure the instanc
 
 1. This will work on nix machines, haven't tested on Windows yet, make sure you have the `aws cli` and `jq` installed.
 2. Run `./setup.sh`, this file does the following:
-  * runs `terraform init`
-  * creates the key pair called `nginx-test-key` and `nginx-test-key.pub`
-  * updates key.tf with the public key
-  * it then asks you to put in your AWS Access Key, Secret Access Key and default region
+  * Runs `terraform init`
+  * Creates the key pair called `nginx-test-key` and `nginx-test-key.pub`
+  * Updates key.tf with the public key
+  * It then asks you to put in your AWS Access Key, Secret Access Key and default region
   * Runs `terraform plan` and lets you view what Terraform will create
   * With user input to proceed, it will run `terraform apply` and create all infrastructure, run Ansible to setup NGINX and run TestInfra unit tests
   * After it succeeds, the script will return back to the Public DNS of the EC2 instance Terraform creates. You can now visit the site.
-  
+
 # Scaling Up
 
 To scale up from 1 to x instances, simply update `ec2-machines.tf` file on line 2 where it says `count = "${var.count}"`. The default count is set to 1 in the `variables.tf` file so you can override this to how many instances you please. Terraform FTW!
