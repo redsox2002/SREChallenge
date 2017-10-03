@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Initializing virtualenv
+
+virtualenv --python=$(type -p python2.7) .venv
+source .venv/bin/activate
+
 # Install yum dependencies
 sudo yum -y update
 sudo yum -y groupinstall "Development tools"
@@ -14,8 +19,7 @@ curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 sudo python get-pip.py
 export PATH=$PATH:$HOME/bin:/usr/local/bin
 source ~/.bash_profile
-pip install ansible --user
-pip install testinfra --user
+pip install -r requirements.txt
 
 set -x
 # Clone GitHub repo with Ansible playbook
@@ -26,3 +30,6 @@ ansible-playbook -i hosts nginx.yml
 # Run testinfra
 cd ../Tests
 testinfra -v test_myinfra.py
+
+# Deactivates virtualenv
+deactivate
