@@ -5,7 +5,7 @@ Terraform will create infrastructure in AWS EC2 as well as configure the instanc
 # Before Using
 
 1. Download and install Terraform for your operating system (https://www.terraform.io/downloads.html)
-2. Clone this repo and `cd` into the `Terraform` folder.
+2. Clone this [repo](https://github.com/redsox2002/SREChallenge.git) and `cd` into the [Terraform](https://github.com/redsox2002/SREChallenge/tree/master/Terraform) folder.
 3. Run `terraform init` which will initialize the working directory containing the Terraform files for the cloud provider (AWS in this case).
 
 # Basic Usage
@@ -31,7 +31,7 @@ Terraform will create infrastructure in AWS EC2 as well as configure the instanc
 
 # Scaling Up
 
-To scale up from 1 to x instances, simply update `ec2-machines.tf` file on line 2 where it says `count = "${var.count}"`. The default count is set to 1 in the `variables.tf` file so you can override this to how many instances you please. Terraform FTW!
+To scale up from 1 to x instances, simply update [ec2-machines.tf](https://github.com/redsox2002/SREChallenge/blob/master/Terraform/ec2-machines.tf) file on line 2 where it says [count = "${var.count}"](https://github.com/redsox2002/SREChallenge/blob/master/Terraform/ec2-machines.tf#L2). The default count is set to 1 in the [variables.tf](https://github.com/redsox2002/SREChallenge/blob/master/Terraform/variables.tf#L34) file so you can override this to how many instances you please. Terraform FTW!
 
 # Notes
 
