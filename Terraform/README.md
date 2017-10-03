@@ -19,7 +19,7 @@ Terraform will create infrastructure in AWS EC2 as well as configure the instanc
 
 # Using setup.sh file
 
-1. This will work on nix machines, haven't tested on Windows yet, make sure you have the `aws cli` and `jq` installed.
+1. This will work on nix machines, haven't tested on Windows yet, make sure you have the [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html) and [jq](https://stedolan.github.io/jq/download/) installed.
 2. Run `./setup.sh`, this file does the following:
   * Runs `terraform init`
   * Creates the key pair called `nginx-test-key` and `nginx-test-key.pub`
