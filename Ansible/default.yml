@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  remote_user: ec2-user
+  become: true
+  become_method: sudo
+  roles:
+    - role: geerlingguy.java
+      when: "ansible_os_family == 'RedHat'"
+      java_packages:
+        - java-1.8.0-openjdk
+    - { role: rvm_io.ruby,
+        tags: ruby,
+        rvm1_rubies: ['ruby-2.3.1'],
+        rvm1_user: 'ec2-user'
+      }
+    - role: geerlingguy.nodejs
