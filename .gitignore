@@ -1,0 +1,7 @@
+../Ansible/ansible.log
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+web-test-key
+web-test-key.pub
+Ansible/ansible.log
