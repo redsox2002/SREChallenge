@@ -1,6 +1,0 @@
----
-# vars file for setup_nginx
-
-ssl_directory: /etc/nginx/ssl
-index_location: /usr/share/nginx/html/index.html
-index_source: /home/ec2-user/SREChallenge/index.html
