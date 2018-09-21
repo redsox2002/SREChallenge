@@ -6,11 +6,11 @@ terraform init
 
 echo "...Creating key pair..."
 # Creating ssh key
-ssh-keygen -t rsa -N "" -f $PWD/nginx-test-key -C "Created by Terraform"
+ssh-keygen -t rsa -N "" -f $PWD/web-test-key -C "Created by Terraform"
 
-export public_key=$(cat $PWD/nginx-test-key.pub)
+export public_key=$(cat $PWD/web-test-key.pub)
 
-echo "...Updating key.tf file with nginx-test-key.pub..."
+echo "...Updating key.tf file with web-test-key.pub..."
 sed -i -e 's~public_key = ""*.$~public_key = "'"$public_key"'"~' key.tf
 
 echo -n "Please enter your AWS Access Key: "

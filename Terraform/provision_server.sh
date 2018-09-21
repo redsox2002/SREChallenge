@@ -19,6 +19,7 @@ curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
 sudo python get-pip.py
 export PATH=$PATH:$HOME/bin:/usr/local/bin
 source ~/.bash_profile
+pip install testinfra
 
 set -x
 # Clone GitHub repo with Ansible playbook
@@ -26,7 +27,8 @@ git clone https://github.com/redsox2002/SREChallenge.git
 cd SREChallenge
 pip install -r requirements.txt
 cd Ansible
-ansible-playbook -i hosts nginx.yml
+ansible-galaxy install -r requirements.yml
+ansible-playbook -i hosts default.yml
 
 # Run testinfra
 cd ../Tests

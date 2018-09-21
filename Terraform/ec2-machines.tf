@@ -1,4 +1,4 @@
-resource "aws_instance" "nginx-server" {
+resource "aws_instance" "web-server" {
   count = "${var.count}"
 
   connection {
@@ -18,15 +18,16 @@ resource "aws_instance" "nginx-server" {
   instance_type = "${var.instance_type}"
   associate_public_ip_address = "true"
   subnet_id = "${aws_subnet.PublicAZA.id}" # Adding the subnet in the subnets.tf file
-  vpc_security_group_ids = ["${aws_security_group.nginx.id}"] # Adding the security group in the securitygroups.tf file
+  vpc_security_group_ids = ["${aws_security_group.web.id}"] # Adding the security group in the securitygroups.tf file
   key_name = "${var.key_name}"
+  iam_instance_profile = "${aws_iam_instance_profile.s3_read_only.id}"
 
   root_block_device {
     volume_size = "8"
   }
 
   tags {
-    Name = "nginx-server-0${count.index}" # Uses count.index to add to the count every time you scale up.
+    Name = "web-server-0${count.index}" # Uses count.index to add to the count every time you scale up.
   }
 
   provisioner "file" {
@@ -36,7 +37,7 @@ resource "aws_instance" "nginx-server" {
     connection {
       type = "ssh"
       user = "ec2-user"
-      private_key = "${file("nginx-test-key")}"
+      private_key = "${file("web-test-key")}"
     }
   }
   provisioner "remote-exec" {
@@ -48,7 +49,7 @@ resource "aws_instance" "nginx-server" {
     connection {
       type = "ssh"
       user = "ec2-user"
-      private_key = "${file("nginx-test-key")}"
+      private_key = "${file("web-test-key")}"
     }
   }
 }

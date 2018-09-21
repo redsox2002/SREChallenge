@@ -1,4 +1,4 @@
-resource "aws_key_pair" "nginx-test-key" {
-  key_name = "nginx-test-key"
-  public_key = ""
+resource "aws_key_pair" "web-test-key" {
+  key_name = "web-test-key"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4zz/ScdMUPcu7qTE1JfQsZfGWV/nHj/z9IWug+g1T5dDlXA5nl5eP5FCchRF5zXxo/JVi2OEE1Xd88BaRBxl6ao9kjGjqWqQwzKkyV/G8TKl5ApvFm57Jaitlbnlvby6AgqSXuVylmHYcjh2keAN8+vO/VDuXB97MK055ofH/GEfENUga8u2dcQBAPE+V6LbLLcz7TGwrxzT11EQlzlSBzOYg8Gx7vO4gR5OD0E0UVSXK6giPY8883rZenYXo4lPXwy5PN41LX34ktFvbKRDjHBrsXfxjNeB6IFmVB5OKKhzV2eKb9hd+8RmFEefMLB0wHVnC7wVsBqjEv9259Dsn Created by Terraform"
 }
