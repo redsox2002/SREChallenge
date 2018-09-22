@@ -1,6 +1,11 @@
 ---
 # tasks file for install_nginx
 
+- name: install latest epel-release
+  yum:
+    name: epel-release
+    state: latest
+
 - name: install nginx
   yum:
     name: nginx

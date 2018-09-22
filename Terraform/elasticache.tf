@@ -8,7 +8,7 @@ resource "aws_elasticache_replication_group" "default" {
 
   automatic_failover_enabled = true
 
-  security_group_names = ["${aws_security_group.redis.id}"]
+  security_group_names = ["${aws_security_group.redis.name}"]
 
   number_cache_clusters = 2
 }

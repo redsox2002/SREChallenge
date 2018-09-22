@@ -32,8 +32,8 @@ ansible-galaxy install -r requirements.yml
 ansible-playbook -i hosts default.yml
 
 # Run testinfra
-cd ../Tests
-goss validate
+# cd ../Tests
+# goss validate
 
 # Deactivates virtualenv
 deactivate

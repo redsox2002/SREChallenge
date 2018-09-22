@@ -8,6 +8,6 @@ resource "aws_db_instance" "web-server" {
   username             = "foo"
   password             = "${var.mysql_password}"
   parameter_group_name = "web-server.mysql5.7"
-  db_subnet_group_name = "${aws_subnet.PrivateAZA.id}"
+  db_subnet_group_name = "${aws_subnet.PrivateAZA.name}"
   vpc_security_group_ids = ["${aws_security_group.db.id}"]
 }
