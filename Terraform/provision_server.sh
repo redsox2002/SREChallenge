@@ -9,7 +9,7 @@ virtualenv --python=$(type -p python2.7) .venv
 source .venv/bin/activate
 
 # Install goss
-curl -fsSL https://goss.rocks/install | GOSS_DST=/usr/bin sh
+#curl -fsSL https://goss.rocks/install | GOSS_DST=/usr/bin sh
 
 # Download and install nodejs rpm
 curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash -

@@ -18,7 +18,22 @@ resource "aws_subnet" "PrivateAZA" {
   }
   availability_zone = "${data.aws_availability_zones.available.names[1]}"
 }
+
 resource "aws_route_table_association" "PrivateAZA" {
     subnet_id = "${aws_subnet.PrivateAZA.id}"
+    route_table_id = "${aws_route_table.private.id}"
+}
+
+resource "aws_subnet" "PrivateAZB" {
+  vpc_id = "${aws_vpc.terraformmain.id}"
+  cidr_block = "${var.Subnet-Private-AzB-CIDR}"
+  tags {
+        Name = "PublicAZC"
+  }
+  availability_zone = "${data.aws_availability_zones.available.names[2]}"
+}
+
+resource "aws_route_table_association" "PrivateAZB" {
+    subnet_id = "${aws_subnet.PrivateAZB.id}"
     route_table_id = "${aws_route_table.private.id}"
 }

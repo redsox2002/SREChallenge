@@ -32,29 +32,6 @@ resource "aws_security_group" "web" {
   }
 }
 
-resource "aws_security_group" "redis" {
-  name = "redis-group"
-  tags {
-    Name = "redis-group"
-  }
-  description = "Security group for redis servers"
-  vpc_id = "${aws_vpc.terraformmain.id}"
-
-  ingress {
-    from_port = 6379
-    to_port = 6379
-    protocol = "tcp"
-    security_groups = ["${aws_security_group.web.id}"]
-  }
-  egress {
-    from_port = 0
-    to_port = 0
-    protocol = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-
 resource "aws_security_group" "db" {
   vpc_id = "${aws_vpc.terraformmain.id}"
   name = "db-group"

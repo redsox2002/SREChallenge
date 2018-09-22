@@ -33,4 +33,8 @@ variable "Subnet-Private-AzA-CIDR" {
   description = "the cidr of the subnet"
 }
 
+variable "Subnet-Private-AzB-CIDR" {
+  default = "172.28.4.0/24"
+  description = "the cidr of the subnet"
+}
 variable "mysql_password" {}
