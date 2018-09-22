@@ -8,9 +8,12 @@
       when: "ansible_os_family == 'RedHat'"
       java_packages:
         - java-1.8.0-openjdk
-    - { role: rvm_io.ruby,
-        tags: ruby,
-        rvm1_rubies: ['ruby-2.3.1'],
-        rvm1_user: 'ec2-user'
-      }
-    - role: geerlingguy.nodejs
+  tasks:
+    - name: install ruby
+      package:
+        name: ruby
+        state: present
+    - name: install node
+      package:
+        name: nodejs
+        state: present

@@ -1,0 +1,10 @@
+---
+package:
+  ruby:
+    installed: true
+    versions:
+      - "2.0.0p648"
+  node:
+    installed: true
+    versions:
+      - "v6.14.4"

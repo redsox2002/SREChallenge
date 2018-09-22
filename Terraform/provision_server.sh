@@ -1,9 +1,17 @@
 #!/bin/bash
 
-# Initializing virtualenv
+# Install virtualenv
+sudo yum install -y python-devel python-setuptools python-pip
+sudo pip install virtualenv
 
+# Initializing virtualenv
 virtualenv --python=$(type -p python2.7) .venv
 source .venv/bin/activate
+
+# Install goss
+curl -fsSL https://goss.rocks/install | GOSS_DST=/usr/bin sh
+
+curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash -
 
 # Install yum dependencies
 sudo yum -y update
@@ -11,15 +19,7 @@ sudo yum -y groupinstall "Development tools"
 sudo yum -y install epel-release
 
 # Remove Amazon Linux AMI pip install
-
-sudo rm /usr/bin/pip
-
-# Install pip, ansible and testinfra
-curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
-sudo python get-pip.py
-export PATH=$PATH:$HOME/bin:/usr/local/bin
-source ~/.bash_profile
-pip install testinfra
+# sudo rm /usr/bin/pip
 
 set -x
 # Clone GitHub repo with Ansible playbook
@@ -32,7 +32,7 @@ ansible-playbook -i hosts default.yml
 
 # Run testinfra
 cd ../Tests
-testinfra -v test_myinfra.py
+goss validate
 
 # Deactivates virtualenv
 deactivate

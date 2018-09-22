@@ -8,7 +8,7 @@ The benefits of using Terraform is scability. AWS does have auto-scaling built i
 
 - Ansible (https://www.ansible.com/), configuration management software.
 - Terraform (https://www.terraform.io/), infrastructure as code software.
-- TestInfra (http://testinfra.readthedocs.io/en/latest/), testing infrastructure software.
+- Goss (https://github.com/aelsabbahy/goss), testing infrastructure software.
 
 # Cloud Provider Used:
 
