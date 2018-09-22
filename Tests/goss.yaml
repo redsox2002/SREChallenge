@@ -8,3 +8,15 @@ package:
     installed: true
     versions:
       - "v6.14.4"
+  nginx:
+    installed: true
+    versinos:
+      - "1.12.2"
+
+file:
+  /usr/share/nginx/index.html:
+    # required attributes
+    exists: true
+    owner: ec2-user
+    group: ec2-user
+    filetype: file

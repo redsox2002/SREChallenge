@@ -4,6 +4,7 @@
   become: true
   become_method: sudo
   roles:
+    - role: install_nginx
     - role: geerlingguy.java
       when: "ansible_os_family == 'RedHat'"
       java_packages:
