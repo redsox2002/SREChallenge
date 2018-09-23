@@ -38,7 +38,7 @@
     - /usr/share/nginx/html/poweredby.png
 
 - name: copy index.html file
-  file:
+  copy:
     src: index.html
     dest: /usr/share/nginx/html/index.html
   notify: restart nginx
