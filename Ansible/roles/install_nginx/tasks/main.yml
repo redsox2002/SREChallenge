@@ -1,10 +1,14 @@
 ---
 # tasks file for install_nginx
 
-- name: install latest epel-release
+- name: update packages
   yum:
-    name: epel-release
+    name: '*'
     state: latest
+
+- name: install latest epel-release
+  command: amazon-linux-extras install epel
+  become_method: sudo
 
 - name: install nginx
   yum:
@@ -25,7 +29,7 @@
 
 - name: clear contents of /usr/share/nginx/html/ folder
   file:
-    path: /usr/share/nginx/html/
+    path: /usr/share/nginx/html/index.html
     state: absent
 
 - name: copy index.html file
