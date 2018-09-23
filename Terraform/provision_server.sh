@@ -17,7 +17,6 @@ curl -sL https://rpm.nodesource.com/setup_6.x | sudo -E bash -
 # Install yum dependencies
 sudo yum -y update
 sudo yum -y groupinstall "Development tools"
-sudo amazon-linux-extras install epel
 
 # Remove Amazon Linux AMI pip install
 # sudo rm /usr/bin/pip
