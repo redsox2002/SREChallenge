@@ -1,6 +1,6 @@
 # Provisioning and Configuring Servers with Terraform
 
-Terraform will create infrastructure in AWS EC2 as well as configure the instances with java, nodejs, ruby and run TestInfra unit tests. This is a single click solution and tries to make everything as automated as possible.
+Terraform will create infrastructure in AWS EC2 as well as configure the instances with java, nodejs, ruby and run Goss unit tests. This is a single click solution and tries to make everything as automated as possible.
 
 # Before Using
 
@@ -14,8 +14,8 @@ Terraform will create infrastructure in AWS EC2 as well as configure the instanc
 2. Since Terraform needs the private key to SSH to the server(s) it creates to provision them afterwards, you will need to have the private SSH key in the Terraform folder called `web-test-key`. You can create the key simply using `ssh-keygen` and specifying the location where you want to save and the name of the key (web-test-key). In the keys.tf file, update the public key to whatever the public key you generated is.
 3. Run `terraform plan` to see what will get created. You will need to specify the AWS region.
 4. Run `terraform apply` to apply all changes. You will need to specify the AWS region.
-5. Sit back and relax and let Terraform take care of creating EC2 instances, VPC, subnets, routing tables, internet gateway, security group, key pairs and then configures them using the provision_server.sh script in the Terraform folder of this project. This shell script install dependencies, clones this repo and runs Ansible to setup java, nodejs, ruby and then run the TestInfra unit tests afterwards.
-6. Profit! Go to the site using the Public IP address or DNS and see the `Hello World!` page be returned.
+5. Sit back and relax and let Terraform take care of creating EC2 instances, VPC, subnets, routing tables, internet gateway, security group, key pairs, elasticache cluster, rds instance, elb, iam roles and then configures them using the provision_server.sh script in the Terraform folder of this project. This shell script install dependencies, clones this repo and runs Ansible to setup java, nodejs, ruby and then run the Goss unit tests afterwards.
+6. Profit! Go to the site using the DNS record for the Elastic Load Balancer (ELB) and see the `Hello World!` page be returned.
 
 # Using setup.sh file
 
@@ -26,7 +26,7 @@ Terraform will create infrastructure in AWS EC2 as well as configure the instanc
   * Updates key.tf with the public key
   * It then asks you to put in your AWS Access Key, Secret Access Key and default region
   * Runs `terraform plan` and lets you view what Terraform will create
-  * With user input to proceed, it will run `terraform apply` and create all infrastructure, run Ansible to setup web and run TestInfra unit tests
+  * With user input to proceed, it will run `terraform apply` and create all infrastructure, run Ansible to setup web and run Goss unit tests
   * After it succeeds, the script will return back to the Public DNS of the EC2 instance Terraform creates. You can now visit the site.
 
 # Scaling Up
