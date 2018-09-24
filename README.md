@@ -4,7 +4,8 @@
 Using whatever infrastructure-as-code (e.g. Cloudformation, Terraform) or configuration management tools
 (e.g. Puppet, Chef, Ansible) you prefer, and whatever full-service IaaS cloud provider you feel comfortable
 in (AWS, Azure, GCP, OpenStack) write code intended to create the following:
-·         Three running web servers behind a load balancer, which is publicly accessible. The web servers should have NodeJS, Ruby and Java installed.
+·         Three running web servers behind a load balancer, which is publicly accessible. The web servers
+          should have NodeJS, Ruby and Java installed.
 ·         A Redis installation accessible by the web servers
 ·         A relational database of your choice accessible by the web servers
 ·         A cloud storage bucket (S3 or similar) with read-only access from the web servers.
