@@ -14,6 +14,7 @@ resource "aws_elasticache_replication_group" "default" {
   automatic_failover_enabled = true
 
   subnet_group_name = "${aws_elasticache_subnet_group.elasticache_subnet_group.name}"
+  security_group_ids = ["${aws_security_group.redis.id}"]
 
   number_cache_clusters = 2
 }

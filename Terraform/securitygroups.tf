@@ -32,6 +32,23 @@ resource "aws_security_group" "web" {
   }
 }
 
+resource "aws_security_group" "redis" {
+  vpc_id = "${aws_vpc.terraformmain.id}"
+  name = "redis-group"
+  description = "redis security group"
+
+  ingress {
+    security_groups = ["${aws_security_group.web.id}"]
+    from_port = 6379
+    to_port = 6379
+    protocol = "tcp"
+  }
+
+  tags = {
+    Name = "redis-group"
+  }
+}
+
 resource "aws_security_group" "db" {
   vpc_id = "${aws_vpc.terraformmain.id}"
   name = "db-group"
