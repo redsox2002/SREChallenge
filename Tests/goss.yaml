@@ -1,23 +1,16 @@
 ---
 package:
-  ruby:
-    title: ruby is installed
-    installed: true
-    versions:
-      - 2.0.0p648
-  node:
-    title: node.js is installed
-    installed: true
-    versions:
-      - v6.14.4
   nginx:
     title: nginx is installed
     installed: true
-    versinos:
+    versions:
       - 1.12.2
+  java-1.8.0-openjdk:
+    title: OpenJDK 8 is installed
+    installed: true
 
 file:
-  /usr/share/nginx/index.html:
+  /usr/share/nginx/html/index.html:
     title: index.html file
     exists: true
     owner: root
@@ -25,10 +18,31 @@ file:
     filetype: file
 
 command:
-  java -version:
-    title: confirm java is the correct version
+  ruby --version:
+    title: confirm ruby version is correct
     exit-status: 0
-    stdout: []
-    stderr:
-      - java version "1.8.0_131"
+    stderr: []
+    stdout:
+      - ruby 2.0.0p648 (2015-12-16) [x86_64-linux]
+    timeout: 10000
+  node -v:
+    title: confirm nodejs version is correct
+    exit-status: 0
+    stderr: []
+    stdout:
+      - v6.14.4
+    timeout: 10000
+  ansible --version:
+    title: confirm ansible version
+    exit-status: 0
+    stderr: []
+    stdout:
+      - ansible 2.4.0.0
+    timeout: 10000
+  goss --version:
+    title: confirm goss version
+    exit-status: 0
+    stderr: []
+    stdout:
+      - goss version v0.3.6
     timeout: 10000
